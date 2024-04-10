@@ -1,7 +1,10 @@
+import DataGridComponent from "../components/DataGridComponent";
+
 export const metadata = {
-  title: "App Router",
+  title: "Data Grid Table",
 };
 
 export default function Page() {
-  return <h1>App Router</h1>;
+  console.log('server renderesd')
+  return <DataGridComponent />;
 }
