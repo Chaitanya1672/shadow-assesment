@@ -1,13 +1,13 @@
-import React from 'react'
 import Filters from './Filters'
 import DataGridTable from './DataGridTable'
+import { Box } from '@mui/material'
 
 const DataGridComponent = () => {
   return (
-    <div>
+    <Box>
       <Filters/>
       <DataGridTable/>
-    </div>
+    </Box>
   )
 }
 

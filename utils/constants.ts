@@ -1,1 +1,1 @@
-export const DUMMY_URL = "https://jsonplaceholder.typicode.com/comments"
+export const DUMMY_URL = process.env.NEXT_PUBLIC_DUMMY_URL

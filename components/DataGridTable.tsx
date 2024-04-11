@@ -1,8 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { Typography } from '@mui/material';
-import { useParams, usePathname, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
 import useHTTP from '../hooks/useHTTP';
 import { DUMMY_URL } from '../utils/constants';
@@ -17,33 +16,20 @@ const columns = [
 const DataGridTable = () => {
   const [tableData, setTableData] = useState([]);
   const searchParams = useSearchParams()
-  // const pathname = usePathname()
-  // const params = useParams()
   
   const {request, loading, error, statusCode} = useHTTP();
   
   useEffect(() => {
-    console.log({searchParams})
-    const id = searchParams.get('id')
-    const email = searchParams.get('email')
-    const name = searchParams.get('name')
-    const body = searchParams.get('body')
-    
-    console.log({id, email, body})
     const fetchData = async () => {
-      let url = `${DUMMY_URL}`
-      if(id){
-        url += `?id=${id}`
-      }
-      if(email){
-        url += `?email=${email}`
-      }
-      if(name){
-        url += `?name=${name}`
-      }
-      if(body){
-        url += `?body=${body}`
-      }
+      const queryParams:Record<string, string> = {};
+      console.log(searchParams)
+      searchParams.forEach((value, key) => {
+        queryParams[key] = value;
+      });
+
+      const urlSearchParams = new URLSearchParams(queryParams).toString();
+      const url = `${DUMMY_URL}?${urlSearchParams}`;
+
       try {
         const response:any = await request(url, 'GET', null, null);
         setTableData(response);
@@ -53,11 +39,10 @@ const DataGridTable = () => {
     };
 
     fetchData();
-  }, []);
+  }, [searchParams]);
 
   return (
-    <div style={{ height: 600, width: '100%' }}>
-      {/* <Typography variant="h4" gutterBottom>DataGrid</Typography> */}
+    <div style={{ height: 550, width: '100%' }}>
       <DataGrid
         rows={tableData}
         columns={columns}
@@ -70,8 +55,6 @@ const DataGridTable = () => {
         }}
         pageSizeOptions={[10, 25, 50, 100]}
         loading={loading}
-        // checkboxSelection
-        // disableSelectionOnClick
       />
     </div>
   );

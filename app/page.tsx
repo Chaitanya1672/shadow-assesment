@@ -5,6 +5,5 @@ export const metadata = {
 };
 
 export default function Page() {
-  console.log('server renderesd')
   return <DataGridComponent />;
 }
