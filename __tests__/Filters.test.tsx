@@ -20,9 +20,9 @@ vi.mock("next/navigation", () => ({
   }
 }));
 
-vi.mock("next/router", () => ({
-  useRouter: vi.fn(),
-}));
+// vi.mock("next/router", () => ({
+//   useRouter: vi.fn(),
+// }));
 
 describe('Filters component', () => {
   

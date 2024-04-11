@@ -44,6 +44,7 @@ const DataGridTable = () => {
   return (
     <div style={{ height: 550, width: '100%' }}>
       <DataGrid
+        data-testid="data-grid"
         rows={tableData}
         columns={columns}
         initialState={{
