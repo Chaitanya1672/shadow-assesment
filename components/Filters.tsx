@@ -104,10 +104,10 @@ const Filters = () => {
           />
         </Grid>
         <Grid item xs={12} sm={2} sx={{ display: "flex", gap: "1rem" }}>
-          <Button variant="contained" size="medium" onClick={handleSubmit}>
+          <Button variant="contained" size="medium" onClick={handleSubmit} title="Search Table">
             Search
           </Button>
-          <Button variant="contained" size="medium" onClick={handleReset}>
+          <Button variant="contained" size="medium" onClick={handleReset} title="Reset">
             {"<"}            
           </Button>
         </Grid>
