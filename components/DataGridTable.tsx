@@ -27,7 +27,10 @@ const DataGridTable = () => {
       });
 
       const urlSearchParams = new URLSearchParams(queryParams).toString();
-      const url = `${DUMMY_URL}?${urlSearchParams}`;
+      let url:string = DUMMY_URL || "";
+      if(urlSearchParams){
+        url = `${DUMMY_URL}?${urlSearchParams}`;
+      }
       const response:any = await request(url, 'GET', null, null);
       setTableData(response);
     };
