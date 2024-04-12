@@ -45,6 +45,8 @@ const Filters = () => {
     const queryParams = createQueryString(inputValues);
     if (queryParams) {
       router.push(pathName + "?" + queryParams);
+    } else {
+      router.push(pathName);
     }
   }, [inputValues]);
   

@@ -22,20 +22,14 @@ const DataGridTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       const queryParams:Record<string, string> = {};
-      console.log(searchParams)
       searchParams.forEach((value, key) => {
         queryParams[key] = value;
       });
 
       const urlSearchParams = new URLSearchParams(queryParams).toString();
       const url = `${DUMMY_URL}?${urlSearchParams}`;
-
-      try {
-        const response:any = await request(url, 'GET', null, null);
-        setTableData(response);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+      const response:any = await request(url, 'GET', null, null);
+      setTableData(response);
     };
 
     fetchData();
